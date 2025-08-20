@@ -77,8 +77,8 @@ RCTD_PCR_CD8 <- readRDS('Data/RCTD_CD8T_PCR.RDS')
 RCTD_NonPCR_CD8 <- readRDS('Data/RCTD_CD8T_NonPCR.RDS')
 RCTD_PCR_CD4 <- readRDS('Data/RCTD_CD4T_PCR.RDS')
 RCTD_NonPCR_CD4 <- readRDS('Data/RCTD_CD4T_NonPCR.RDS')
-RCTD_PCR_merge <- readRDS('RCTD_Merge_PCR.RDS')
-RCTD_NonPCR_merge <- readRDS('RCTD_Merge_NonPCR.RDS')
+RCTD_PCR_merge <- readRDS('Data/RCTD_Merge_PCR.RDS')
+RCTD_NonPCR_merge <- readRDS('Data/RCTD_Merge_NonPCR.RDS')
 
 # Article figures
 source("src/Figure1.R") # Figure 1
