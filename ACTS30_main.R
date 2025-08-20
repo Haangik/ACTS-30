@@ -28,6 +28,15 @@ require(clusterProfiler)
 require(CellChat)
 
 # Loading required data
+### Treatment outcomes of patients
+patients_pCR<-c('ACTSCRHBO00100T', 'ACTSCRHBO00500T', 'ACTSCRHBO01300T',
+                'ACTSCRHBO01800T', 'ACTSCRHBO02000T', 'ACTSCRHBO02200T',
+                'ACTSCRHBO02400T', 'ACTSCRHBO02500T')
+patients_nonpCR<-c('ACTSCRHBO00600T', 'ACTSCRHBO00700T', 'ACTSCRHBO00900T',
+                   'ACTSCRHBO01000T', 'ACTSCRHBO01400T', 'ACTSCRHBO01500T',
+                   'ACTSCRHBO01700T', 'ACTSCRHBO02300T', 'ACTSCRHBO02700T',
+                   'ACTSCRHBO02800T', 'ACTSCRHBO02900T')
+
 ### Data was pre-processed to .RDS files
 Total <- readRDS('Data/ACTS30_Total.RDS') # Total scRNA-seq data object
 CD4T<-readRDS("Data/CD4T.RDS") # Re-clustered CD4+ T cell subset
