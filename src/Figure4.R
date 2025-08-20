@@ -59,7 +59,7 @@ cloneCall="gene";chain="both"
 TCR_diversity<-clonalDiversity(combined.TCR, 
                                cloneCall = cloneCall,
                                chain = chain,
-                               n.boots=1000,
+                               n.boots=5000,
                                exportTable = T)
 TCR_diversity$Response_2<-sm$response_2
 
@@ -93,12 +93,12 @@ TCR_diversity_cell<-do.call(rbind, lapply(target_celltype, FUN=function(c){
   if(length(remove_ind)>0){
     TCR_diversity<-clonalDiversity(combined.TCR.filter[-remove_ind], 
                                    cloneCall = "gene",chain = chain, 
-                                   n.boots=1000, exportTable = T)
+                                   n.boots=5000, exportTable = T)
     TCR_diversity$Response_2<-sm$response_2[-remove_ind]  
   }else{
     TCR_diversity<-clonalDiversity(combined.TCR.filter, 
                                    cloneCall = "gene",chain = chain,
-                                   n.boots=1000, exportTable = T)
+                                   n.boots=5000, exportTable = T)
     TCR_diversity$Response_2<-sm$response_2
   }
   
