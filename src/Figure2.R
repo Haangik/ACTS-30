@@ -96,7 +96,7 @@ markers.CD8Tem <- FindMarkers(CD8Tem,
 #write.csv(markers.CD8Tem, file = 'Output/CD8Tem_pCR_VS_NonpCR.csv')
 
 # TPEX Differential Gene Expression
-CD8Tpex <- subset(Tcell_Total, T_Celltype1s == 'CD8 Tpex')
+CD8Tpex <- subset(Total_T, T_Celltype1s == 'CD8 Tpex')
 CD8Tpex@meta.data <- droplevels(CD8Tpex@meta.data)
 Idents(CD8Tpex) <- 'pcR'
 
@@ -157,7 +157,8 @@ combined.TCR<-addVariable(combined.TCR,
 cloneCall="gene";chain="both"
 
 TCR_diversity<-clonalDiversity(combined.TCR, 
-                               cloneCall = cloneCall,chain = chain, exportTable = T)
+                               cloneCall = cloneCall,chain = chain, 
+                               n.boots=5000, exportTable = T)
 TCR_diversity$Response_2<-sm$response_2
 
 Figure2Ea<-ggplot(TCR_diversity, aes(x = Response_2, y = chao1
@@ -209,11 +210,13 @@ TCR_diversity_cell<-do.call(rbind, lapply(target_celltype, FUN=function(c){
   remove_ind<-which(sapply(combined.TCR.filter, nrow)<3)
   if(length(remove_ind)>0){
     TCR_diversity<-clonalDiversity(combined.TCR.filter[-remove_ind], 
-                                   cloneCall = "gene",chain = chain, exportTable = T)
+                                   cloneCall = "gene",chain = chain, 
+                                   n.boots=5000, exportTable = T)
     TCR_diversity$Response_2<-sm$response_2[-remove_ind]  
   }else{
     TCR_diversity<-clonalDiversity(combined.TCR.filter, 
-                                   cloneCall = "gene",chain = chain, exportTable = T)
+                                   cloneCall = "gene",chain = chain,
+                                   n.boots=5000, exportTable = T)
     TCR_diversity$Response_2<-sm$response_2
   }
   
